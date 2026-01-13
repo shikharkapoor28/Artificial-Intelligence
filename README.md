@@ -1,62 +1,70 @@
-🧠 Gemini Memory Chatbot (Console)
+# 🧠 Gemini Memory Chatbot (Console)
 
-A memory-augmented conversational AI chatbot built using Google’s Gemini 1.5 Flash model.
-This project demonstrates how to simulate long-term conversational memory using LLM-based recursive summarization, allowing the chatbot to retain context across multiple turns in a console environment.
+A **memory-augmented conversational AI chatbot** built using Google’s **Gemini 1.5 Flash** model.  
+This project demonstrates how to simulate **long-term conversational memory** using **LLM-based recursive summarization**, allowing the chatbot to retain context across multiple turns in a console environment.
 
-🚀 What This Project Does
+---
+
+## 🚀 What This Project Does
 
 Unlike a basic prompt-response chatbot, this system:
 
-Maintains conversation memory
+- Maintains **conversation memory**
+- Compresses past dialogue into a **rolling summary**
+- Feeds that summary back into every new model prompt
+- Allows Gemini to **reason over prior context**
 
-Compresses past dialogue into a rolling summary
+This creates the illusion of a **persistent, intelligent assistant** that “remembers” what was said earlier.
 
-Feeds that summary back into every new model prompt
+---
 
-Allows Gemini to reason over prior context
+## 🧩 Architecture
 
-This creates the illusion of a persistent, intelligent assistant that “remembers” what was said earlier.
-
-🧩 Architecture
 User Input
-   ↓
+↓
 Conversation Summary (Memory)
-   ↓
+↓
 Prompt = [Memory + New Message]
-   ↓
+↓
 Gemini 1.5 Flash
-   ↓
+↓
 Response
-   ↓
+↓
 Update Memory via LLM Summarization
-   ↺ (loop)
+↺ (loop)
 
 
 This design mimics how production AI systems (ChatGPT, Claude, Copilot) maintain conversational context under token limits.
 
-🧠 Key Features
+---
 
-Persistent Memory
-Uses Gemini to summarize the entire conversation after every turn, allowing unlimited chat length.
+## 🧠 Key Features
 
-Context Injection
-The chatbot prepends memory to every prompt so responses remain relevant.
+- **Persistent Memory**  
+  Uses Gemini to summarize the entire conversation after every turn, allowing unlimited chat length.
 
-Stateless API → Stateful Agent
-Converts Gemini’s stateless API into a stateful conversational agent.
+- **Context Injection**  
+  The chatbot prepends memory to every prompt so responses remain relevant.
 
-Console Interface
-Simple, fast, and ideal for experimentation and learning.
+- **Stateless API → Stateful Agent**  
+  Converts Gemini’s stateless API into a stateful conversational agent.
 
-🛠️ Tech Stack
+- **Console Interface**  
+  Simple, fast, and ideal for experimentation and learning.
 
-Model: Gemini 1.5 Flash
+---
 
-Language: Python
+## 🛠️ Tech Stack
 
-SDK: Google Generative AI Python SDK
+- **Model:** Gemini 1.5 Flash  
+- **Language:** Python  
+- **SDK:** Google Generative AI Python SDK  
 
-📦 Installation
+---
+
+## 📦 Installation
+
+```bash
 pip install google-generativeai
 
 🔑 Setup
@@ -65,24 +73,23 @@ Set your Gemini API key:
 
 os.environ["API_KEY"] = "YOUR_GEMINI_API_KEY"
 
-
 Or export it in your shell:
 
 export API_KEY="YOUR_GEMINI_API_KEY"
 
 ▶️ Run the Chatbot
-python chatbot.py
 
+python chatbot.py
 
 Type your messages and type exit to quit.
 
 🧠 Example
+
 You: My name is Shikhar
 Gemini: Nice to meet you, Shikhar!
 
 You: What is my name?
 Gemini: Your name is Shikhar.
-
 
 This works because the chatbot remembers via summarization.
 
@@ -136,3 +143,6 @@ Multi-session user memory
 
 Shikhar Kapoor
 AI Engineer | Data Scientist | Systems Builder
+
+
+
